@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 06:12:49 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/02 14:20:06 by iokuno           ###   ########.fr       */
+/*   Created: 2025/07/02 13:53:27 by iokuno            #+#    #+#             */
+/*   Updated: 2025/07/02 14:13:53 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	get_color(int iter)
+void	draw_julia(t_fractol *f)
 {
-	if (iter == MAX_ITER)
-		return (0x000000);               // 黒
-	return (0xFFFFFF * iter / MAX_ITER); // グラデーション
-}
-
-void	draw_mandelbrot(t_fractol *f)
-{
-	double	tmp;
+	t_complex	z;
+	double		tmp;
 
 	int x, y, i;
-	t_complex c, z;
+	t_complex c = {.re = 0.355, .im = 0.355}; // 好きなパラメータ
 	for (y = 0; y < HEIGHT; y++)
 	{
 		for (x = 0; x < WIDTH; x++)
 		{
-			c.re = x / f->zoom + f->offset_x;
-			c.im = y / f->zoom + f->offset_y;
-			z.re = 0;
-			z.im = 0;
+			z.re = x / f->zoom + f->offset_x;
+			z.im = y / f->zoom + f->offset_y;
 			i = 0;
 			while (z.re * z.re + z.im * z.im <= 4 && i < MAX_ITER)
 			{
