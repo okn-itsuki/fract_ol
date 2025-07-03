@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 06:12:49 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/02 14:20:06 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/02 14:48:19 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	get_color(int iter)
 {
 	if (iter == MAX_ITER)
-		return (0x000000);               // 黒
+		return (0xFFFFFF);               // 黒
 	return (0xFFFFFF * iter / MAX_ITER); // グラデーション
 }
 
