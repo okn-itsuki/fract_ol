@@ -21,7 +21,7 @@ LFLAGS  = -L minilibx-linux -lmlx -lXext -lX11 -lm \
 RM      = rm -f
 
 SRCDIR  = src
-SRCFILE = main.c mandelbrot.c julia.c
+SRCFILE = main.c mandelbrot.c julia.c minilibft.c
 SRCS    = $(addprefix $(SRCDIR)/, $(SRCFILE))
 OBJS    = $(SRCS:.c=.o)
 
@@ -65,5 +65,8 @@ fclean: clean
 	$(MAKE) -C $(PRINTF_DIR) fclean
 
 re: fclean all
+
+check	:
+	cc -fsanitize=address -g $(SRCS)
 
 .PHONY: all clean fclean re

@@ -12,6 +12,7 @@
 
 #include "fractol.h"
 
+<<<<<<< Updated upstream
 int	get_color(int iter)
 {
 	if (iter == MAX_ITER)
@@ -19,6 +20,8 @@ int	get_color(int iter)
 	return (0xFFFFFF * iter / MAX_ITER); // グラデーション
 }
 
+=======
+>>>>>>> Stashed changes
 void	draw_mandelbrot(t_fractol *f)
 {
 	double	tmp;

@@ -12,15 +12,45 @@
 
 #include "fractol.h"
 
+// 7/3 コマンドライン引数を判定してerror Comment　を出力
+int invalid_input(const char *arg)
+{
+	if (ft_strcmp(arg,"mandelbrot"))
+		return(0);
+	if (ft_strcmp(arg,"mandelbrot"))
+		return(0);
+	return(1);
+}
+
+void print_usage(void)
+{
+	ft_printf("plz args \"mondelbrot\" or \"julia\" ");
+}
+
+//　7/3　色彩表現
+int	get_color(int iter)
+{
+	if (iter == MAX_ITER)
+		return (0x000000);               // 黒
+	return (0x00FF00 * iter / MAX_ITER); // グラデーション
+}
+
+//　ｘボタンで終了させる　7/2
 int	close_window(t_fractol *f)
 {
 	mlx_destroy_window(f->mlx, f->win);
 	exit(0);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, const char **argv)
 {
 	t_fractol f;
+
+	if (argc < 2 || invalid_input(argv[1]))
+	{
+		print_usage();
+		return (1);
+	}
 
 	if (argc != 2 || (argv[1][0] != 'm' && argv[1][0] != 'M'
 			&& argv[1][0] != 'j' && argv[1][0] != 'J'))

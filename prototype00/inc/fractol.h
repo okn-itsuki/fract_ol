@@ -13,8 +13,13 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+// my library
 # include "libft.h"
+# include "ft_printf.h"
+
+// minilibx
 # include "mlx.h"
+
 # include <math.h>
 # include <stdint.h>
 # include <stdlib.h>
@@ -46,6 +51,7 @@ int			close_window(t_fractol *f);
 void		draw_mandelbrot(t_fractol *f);
 void		draw_julia(t_fractol *f);
 int			hsv_to_rgb(double h, double s, double v);
+int			ft_strcmp(const char *s1 ,const char *s2);
 
 # define WIDTH 800
 # define HEIGHT 800
