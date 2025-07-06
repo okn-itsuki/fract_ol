@@ -1,8 +1,16 @@
-#include "fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minilibft.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/07 05:29:30 by iokuno            #+#    #+#             */
+/*   Updated: 2025/07/07 05:29:31 by iokuno           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <unistd.h>
-// #include <string.h>
+#include "fractol.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
@@ -26,9 +34,66 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-// int main(int ac,char **av)
-// {
-//     printf("%d\n",ft_strcmp(av[1],"test"));
-//     printf("%d\n",strcmp(av[1],"test"));
-//     return (0);
-// }
+//---------------------------------------------
+
+static int	skip_space_sign(const char *s, int *idx)
+{
+	int	sign;
+
+	sign = 1;
+	while (s[*idx] == ' ' || (s[*idx] >= 9 && s[*idx] <= 13))
+		++(*idx);
+	if (s[*idx] == '-' || s[*idx] == '+')
+	{
+		if (s[*idx] == '-')
+			sign = -1;
+		++(*idx);
+	}
+	return (sign);
+}
+
+static double	parse_int(const char *s, int *idx)
+{
+	double	val;
+
+	val = 0.0;
+	while (s[*idx] >= '0' && s[*idx] <= '9')
+	{
+		val = val * 10.0 + (s[*idx] - '0');
+		++(*idx);
+	}
+	return (val);
+}
+
+static double	parse_frac(const char *s, int *idx)
+{
+	double	val;
+	double	div;
+
+	val = 0.0;
+	div = 1.0;
+	if (s[*idx] == '.')
+	{
+		++(*idx);
+		while (s[*idx] >= '0' && s[*idx] <= '9')
+		{
+			val = val * 10.0 + (s[*idx] - '0');
+			div *= 10.0;
+			++(*idx);
+		}
+	}
+	return (val / div);
+}
+
+double	ft_atof(const char *s)
+{
+	int		i;
+	int		sign;
+	double	res;
+
+	i = 0;
+	sign = skip_space_sign(s, &i);
+	res = parse_int(s, &i);
+	res += parse_frac(s, &i);
+	return (res * sign);
+}

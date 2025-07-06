@@ -6,13 +6,13 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:57:28 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/06 21:31:28 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/07 02:03:07 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	zoom(t_fractol *f, int x, int y, double factor)
+static void	zoom(t_fractol *f, int x, int y, double factor)
 {
 	double	cx;
 	double	cy;
@@ -25,7 +25,7 @@ void	zoom(t_fractol *f, int x, int y, double factor)
 	f->offset_y = cy - (double)y / f->zoom;
 }
 
-int	mouse_hook(int button, int x, int y, int max_iter, t_fractol *f)
+int	mouse_hook(int button, int x, int y, t_fractol *f)
 {
 	if (button == 4) // scroll up → zoom in
 		zoom(f, x, y, 1.1);
@@ -35,9 +35,9 @@ int	mouse_hook(int button, int x, int y, int max_iter, t_fractol *f)
 		return (0);
 
 	if (f->type == 'm')
-		draw_mandelbrot(f, max_iter);
+		draw_mandelbrot(f);
 	else if (f->type == 'j')
-		draw_julia(f, max_iter);
+		draw_julia(f, &(f->c));
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
 	return (0);
 }
