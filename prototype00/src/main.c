@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 06:13:02 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/06 18:25:41 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/06 23:06:33 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // 7/3 コマンドライン引数を判定してerror Comment　を出力
 int	invalid_input(const char *arg)
 {
-	if (ft_strcmp(arg, "mandelbrot"))
+	if (ft_strcmp(arg, "m"))
 		return (0);
-	if (ft_strcmp(arg, "julia"))
+	if (ft_strcmp(arg, "j"))
 		return (0);
 	return (1);
 }
