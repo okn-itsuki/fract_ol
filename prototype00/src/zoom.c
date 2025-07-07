@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:57:28 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/07 02:03:07 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/08 06:24:56 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,18 @@ static void	zoom(t_fractol *f, int x, int y, double factor)
 	cx = (double)x / f->zoom + f->offset_x;
 	cy = (double)y / f->zoom + f->offset_y;
 	f->zoom *= factor;
-	// ズーム後もマウス位置が中心に来るようオフセットを調整
 	f->offset_x = cx - (double)x / f->zoom;
 	f->offset_y = cy - (double)y / f->zoom;
 }
 
 int	mouse_hook(int button, int x, int y, t_fractol *f)
 {
-	if (button == 4) // scroll up → zoom in
+	if (button == 4)
 		zoom(f, x, y, 1.1);
-	else if (button == 5) // scroll down → zoom out
+	else if (button == 5)
 		zoom(f, x, y, 0.9);
 	else
 		return (0);
-
 	if (f->type == 'm')
 		draw_mandelbrot(f);
 	else if (f->type == 'j')

@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 13:53:27 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/07 05:38:33 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/08 06:23:43 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	julia(t_fractol *f, t_complex *c, int h, int w)
 
 void	draw_julia(t_fractol *f, t_complex *c)
 {
-	int h;
-	int w;
+	int	h;
+	int	w;
 
 	h = 0;
 	w = 0;

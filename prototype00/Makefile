@@ -6,7 +6,7 @@
 #    By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/01 12:43:07 by iokuno            #+#    #+#              #
-#    Updated: 2025/07/07 06:02:52 by iokuno           ###   ########.fr        #
+#    Updated: 2025/07/07 21:42:27 by iokuno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,12 @@ LFLAGS  = -L minilibx-linux -lmlx -lXext -lX11 -lm \
 RM      = rm -f
 
 SRCDIR  = src
-SRCFILE = main.c mandelbrot.c julia.c minilibft.c zoom.c arg_check.c
+SRCFILE = main.c \
+		mandelbrot.c \
+		julia.c \
+		minilibft.c \
+		zoom.c \
+		arg_check.c
 SRCS    = $(addprefix $(SRCDIR)/, $(SRCFILE))
 OBJS    = $(SRCS:.c=.o)
 
