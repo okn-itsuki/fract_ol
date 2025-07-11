@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 06:13:02 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/12 02:42:00 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/12 07:41:44 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	fractol(const char **av)
 
 int	main(int ac, const char **av)
 {
-	if (!invalid_input(ac, av))
+	if (invalid_input(ac, av))
 	{
 		print_usage();
 		return (1);

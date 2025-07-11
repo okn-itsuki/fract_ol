@@ -3,6 +3,7 @@
 		"mlx.h": "c",
 		"fractol.h": "c",
 		"*.a": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"stdio.h": "c"
 	}
 }

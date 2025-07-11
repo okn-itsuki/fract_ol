@@ -6,25 +6,11 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 01:42:21 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/12 03:05:42 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/12 07:41:47 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-// int	get_color(int iter, int max_iter)
-// {
-// 	double	t;
-// 	int		r;
-// 	int		g;
-// 	int		b;
-
-// 	t = (double)iter / max_iter;
-// 	r = (int)(9 * (1 - t) * t * t * t * 255);
-// 	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
-// 	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-// 	return (r << 16 | g << 8 | b);
-// }
 
 int	get_color(int iter, int max_iter)
 {
