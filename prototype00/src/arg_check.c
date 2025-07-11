@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 05:45:59 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/08 06:24:10 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/12 01:19:44 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static bool	is_valid_double(const char *arg)
 	{
 		if (*arg == '.')
 		{
-			if (++dot_count > 1)
+			dot_count++;
+			if (dot_count > 1)
 				return (false);
 		}
 		else if (!ft_isdigit(*arg))
@@ -39,23 +40,23 @@ static bool	is_valid_double(const char *arg)
 
 bool	invalid_input(int ac, const char **av)
 {
-	if (ac == 2 && ft_strcmp(av[1], "m") == 0)
-		return (false);
-	if ((ac == 2 || ac == 4) && ft_strcmp(av[1], "j") == 0)
+	if (ac == 2 && (ft_strcmp(av[1], "mandelbrot") == 0))
+		return (true);
+	if ((ac == 2 || ac == 4) && (ft_strcmp(av[1], "julia") == 0))
 	{
 		if (ac == 2)
-			return (false);
+			return (true);
 		if (is_valid_double(av[2]) && is_valid_double(av[3]))
-			return (false);
+			return (true);
 	}
-	return (true);
+	return (false);
 }
 
 void	print_usage(void)
 {
 	ft_printf("erorr : plz args !\n");
-	ft_printf("mandelbrot -> \"m\"\n");
-	ft_printf("julia      -> \"j\" <real> <imginary>");
+	ft_printf("mandelbrot -> \"mandelbrot\"\n");
+	ft_printf("julia      -> \"julia\" <real> <imginary>");
 }
 
 void	arg_check(t_fractol *f, t_complex *c, const char **av)

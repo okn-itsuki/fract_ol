@@ -6,45 +6,21 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 06:13:02 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/08 06:26:12 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/12 02:42:00 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static int	handle_esc(int keycode, t_fractol *f)
-{
-	if (keycode == 65307)
-	{
-		mlx_destroy_image(f->mlx, f->img);
-		mlx_destroy_window(f->mlx, f->win);
-		exit(0);
-	}
-	return (0);
-}
-int	get_color(int iter, int max_iter)
-{
-	if (iter == max_iter)
-		return (0x000000);
-	return (0x666666 * iter / max_iter);
-}
-
-int	close_window(t_fractol *f)
-{
-	mlx_destroy_window(f->mlx, f->win);
-	mlx_key_hook(f->win, handle_esc, f);
-	exit(0);
-}
 
 static void	fractol(const char **av)
 {
 	t_fractol	f;
 	t_complex	c;
 
-	f.type = (av[1][0] | 32);
-	f.zoom = 200;
-	f.offset_x = -2.0;
-	f.offset_y = -2.0;
+	f.type = (av[1][0] | 0b00100000);
+	f.zoom = ZOOM;
+	f.offset_x = -((double)WIDTH / 2.0) / f.zoom;
+	f.offset_y = -((double)HEIGHT / 2.0) / f.zoom;
 	f.mlx = mlx_init();
 	f.win = mlx_new_window(f.mlx, WIDTH, HEIGHT, "iokuno");
 	f.img = mlx_new_image(f.mlx, WIDTH, HEIGHT);
@@ -59,7 +35,7 @@ static void	fractol(const char **av)
 
 int	main(int ac, const char **av)
 {
-	if (invalid_input(ac, av))
+	if (!invalid_input(ac, av))
 	{
 		print_usage();
 		return (1);

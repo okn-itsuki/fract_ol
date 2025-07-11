@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 06:13:04 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/08 06:21:38 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/11 22:41:43 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,23 @@ typedef struct s_fractol
 	t_complex	c;
 }				t_fractol;
 
-// main.c
-int				get_color(int iter, int max_iter);
-int				close_window(t_fractol *f);
-
 // arg_cheak.c
+int				handle_esc(int keycode, t_fractol *f);
 bool			invalid_input(int ac, const char **av);
 void			print_usage(void);
 void			arg_check(t_fractol *f, t_complex *c, const char **av);
+
+// utility.c
+int				get_color(int iter, int max_iter);
+int				close_window(t_fractol *f);
+int				ft_strcmp(const char *s1, const char *s2);
+double			ft_atof(const char *s);
 
 // julia.c
 void			draw_julia(t_fractol *f, t_complex *c);
 
 // mandelbrot.c
 void			draw_mandelbrot(t_fractol *f);
-
-// minilibft.c
-int				ft_strcmp(const char *s1, const char *s2);
-double			ft_atof(const char *s);
 
 // zoom.c
 int				mouse_hook(int button, int x, int y, t_fractol *f);
