@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utility01.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/12 01:42:21 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/13 04:35:24 by iokuno           ###   ########.fr       */
+/*   Created: 2025/07/13 01:10:21 by iokuno            #+#    #+#             */
+/*   Updated: 2025/07/13 02:47:18 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	get_color(int iter, int max_iter)
+void	free_all(t_fractol *f)
 {
-	double	t;
-	int		r;
-	int		g;
-	int		b;
-
-	if (iter == max_iter)
-		return (0x000000);
-	t = (double)iter / max_iter;
-	r = (int)(255 * t);
-	g = (int)(100 * t);
-	b = (int)(50 * (1 - t));
-	return (r << 16 | g << 8 | b);
+	if (!f)
+		return ;
+	if (f->img && f->mlx)
+		mlx_destroy_image(f->mlx, f->img);
+	if (f->win && f->mlx)
+		mlx_destroy_window(f->mlx, f->win);
+	if (f->mlx)
+		mlx_destroy_display(f->mlx);
+	if (f->mlx)
+		free(f->mlx);
 }
 
-int	handle_esc(int keycode, t_fractol *f)
+int	close_window(t_fractol *f)
 {
-	if (keycode == ESC_KEY)
-		return (close_window(f));
+	free_all(f);
+	exit(EXIT_SUCCESS);
 	return (0);
+}
+
+void	error_exit(const char *msg, t_fractol *f)
+{
+	perror(msg);
+	free_all(f);
+	exit(EXIT_FAILURE);
 }

@@ -4,6 +4,11 @@
 
 cc -I minilibx-linux -L minilibx-linux -lmlx -lXext -lX11 -lm -o fractol main.c
 
+7/12
+	mlx_init();
+	mlx_new_window(f.mlx, WIDTH, HEIGHT, "iokuno");
+	mlx_new_image(f.mlx, WIDTH, HEIGHT);
+	error処理
 
 7/7　課題
 	・zoomをスムーズbaffering の実装

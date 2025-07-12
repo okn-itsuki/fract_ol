@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 06:13:04 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/11 22:41:43 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/13 01:29:36 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@
 # include <math.h>
 # include <stdbool.h>
 # include <stdint.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
+// struct
 typedef struct s_complex
 {
 	double		re;
@@ -60,9 +62,13 @@ void			arg_check(t_fractol *f, t_complex *c, const char **av);
 
 // utility.c
 int				get_color(int iter, int max_iter);
-int				close_window(t_fractol *f);
 int				ft_strcmp(const char *s1, const char *s2);
 double			ft_atof(const char *s);
+
+// error.c
+void			free_all(t_fractol *f);
+int				close_window(t_fractol *f);
+void			error_exit(const char *msg, t_fractol *f);
 
 // julia.c
 void			draw_julia(t_fractol *f, t_complex *c);

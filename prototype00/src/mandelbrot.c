@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 06:12:49 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/12 07:41:42 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/13 04:55:30 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static int	mandelbrot_iter(t_complex c)
 	double		tmp;
 	int			i;
 
+	if (c.re * c.re + c.im * c.im > 4.0)
+		return (0);
 	z.re = 0;
 	z.im = 0;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:57:28 by iokuno            #+#    #+#             */
-/*   Updated: 2025/07/10 21:12:51 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/07/13 04:35:30 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static void	zoom(t_fractol *f, int x, int y, double factor)
 
 int	mouse_hook(int button, int x, int y, t_fractol *f)
 {
-	if (button == 4)
-		zoom(f, x, y, 1.1);
-	else if (button == 5)
-		zoom(f, x, y, 0.9);
+	if (button == MOUSE_SCROLL_UP)
+		zoom(f, x, y, ZOOM_IN_FACTOR);
+	else if (button == MOUSE_SCROLL_DOWN)
+		zoom(f, x, y, ZOOM_OUT_FACTOR);
 	else
 		return (0);
 	if (f->type == 'm')

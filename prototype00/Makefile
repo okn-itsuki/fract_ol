@@ -6,7 +6,7 @@
 #    By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/01 12:43:07 by iokuno            #+#    #+#              #
-#    Updated: 2025/07/12 07:41:50 by iokuno           ###   ########.fr        #
+#    Updated: 2025/07/13 01:26:16 by iokuno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ RM      = rm -f
 
 SRCDIR  = src
 OBJDIR  = obj
-SRCFILE = main.c mandelbrot.c julia.c utility00.c utility01.c zoom.c arg_check.c
+SRCFILE = main.c mandelbrot.c julia.c error.c \
+		utility00.c utility01.c zoom.c arg_check.c
 SRCS    = $(addprefix $(SRCDIR)/, $(SRCFILE))
 OBJS    = $(addprefix $(OBJDIR)/, $(SRCFILE:.c=.o))
 
